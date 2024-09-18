@@ -167,11 +167,11 @@ export function decodeSourceMap(
     // sourceRoot set to optionally get a string "sourceRoot" from jsonMap;
     optionallyGetString("sourceRoot", jsonMap),
     // sources set to optionally get a list of optional strings "sources" from jsonMap;
-    optionallyGetListString("sources", jsonMap),
+    optionallyGetStringList("sources", jsonMap),
     // sourcesContent set to optionally get a list of optional strings "sourcesContent" from jsonMap;
-    optionallyGetListOfOptionallyStrings("sourcesContent", jsonMap),
+    optionallyGetOptionallyStringList("sourcesContent", jsonMap),
     // ignoredSources set to optionally get a list of array indexes "ignoreList" from jsonMap.
-    optionallyGetListArrayIndex("ignoreList", jsonMap),
+    optionallyGetArrayIndexList("ignoreList", jsonMap),
   );
 
   // 7. Set sourceMap’s mappings to the result of decoding source map mappings with:
@@ -179,7 +179,7 @@ export function decodeSourceMap(
     // mappings set to jsonMap["mappings"];
     jsonMap.get("mappings") as string,
     // names set to optionally get a list of strings "names" from jsonMap;
-    optionallyGetListString("names", jsonMap),
+    optionallyGetStringList("names", jsonMap),
     // sources set to sourceMap’s sources.
     sourceMap.sources,
   );
@@ -212,7 +212,7 @@ export function optionallyGetString(
 /**
  * [Source Map](https://tc39.es/source-map/#optionally-get-a-list-of-strings)
  */
-export function optionallyGetListString(
+export function optionallyGetStringList(
   key: string,
   jsonMap: Map<unknown, unknown>,
 ): List<string> {
@@ -244,7 +244,7 @@ export function optionallyGetListString(
 /**
  * [Source Map](https://tc39.es/source-map/#optionally-get-a-list-of-optional-strings)
  */
-export function optionallyGetListOfOptionallyStrings(
+export function optionallyGetOptionallyStringList(
   key: string,
   jsonMap: Map<unknown, unknown>,
 ): List<string | null> {
@@ -282,7 +282,7 @@ export function optionallyGetListOfOptionallyStrings(
 /**
  * [Source Map](https://tc39.es/source-map/#optionally-get-a-list-of-array-indexes)
  */
-export function optionallyGetListArrayIndex(
+export function optionallyGetArrayIndexList(
   key: string,
   jsonMap: Map<unknown, unknown>,
 ): List<number | null> {
