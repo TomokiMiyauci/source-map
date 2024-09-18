@@ -1,10 +1,13 @@
-import { List, Map } from "@miyauci/infra";
 import {
+  concatenate,
+  isAsciiString,
+  List,
+  Map,
   parseJSONIntoInfraValue,
   type PositionVariable,
   strictlySplit,
-} from "./infra/mod.ts";
-import { concatenate } from "./infra/string.ts";
+} from "@miyauci/infra";
+import { BASE64_ALPHABET } from "@miyauci/rfc4648";
 
 /**
  * [Source Map](https://tc39.es/source-map/#source-map-format)
@@ -366,10 +369,6 @@ export interface DecodedMapping {
   name: string | null;
 }
 
-function isAsciiString(input: string): boolean {
-  return /^[\x00-\x7F]*$/.test(input);
-}
-
 /**
  * [Source Map](https://tc39.es/source-map/#decode-source-map-mappings)
  */
@@ -531,43 +530,6 @@ export function decodeSourceMapMappings(
   return decodedMappings;
 }
 
-const BASE64_TABLE: { [key: string]: number } = {
-  "A": 0,
-  "B": 1,
-  "C": 2,
-  "D": 3,
-  "E": 4,
-  "F": 5,
-  "G": 6,
-  "H": 7,
-  "I": 8,
-  "J": 9,
-  "K": 10,
-  "L": 11,
-  "M": 12,
-  "N": 13,
-  "O": 14,
-  "P": 15,
-  "Q": 16,
-  "R": 17,
-  "S": 18,
-  "T": 19,
-  "U": 20,
-  "V": 21,
-  "W": 22,
-  "X": 23,
-  "Y": 24,
-  "Z": 25,
-  "a": 26,
-  "b": 27,
-  "c": 28,
-  "d": 29,
-  "e": 30,
-  "f": 31,
-  "+": 62,
-  "/": 63,
-};
-
 /**
  * [](https://tc39.es/source-map/#decode-a-base64-vlq)
  */
@@ -579,7 +541,7 @@ export function decodeBase64VLQ(
   if (position.value >= segment.length) return null;
 
   // 2. Let first be a byte whose the value is the number corresponding to segment’s positionth code unit, according to the [base64] encoding.
-  const first = BASE64_TABLE[segment[position.value]];
+  const first = BASE64_ALPHABET[segment[position.value]];
 
   // NOTE: The two most significant bits of first are 0.
 
@@ -604,7 +566,7 @@ export function decodeBase64VLQ(
     if (position.value >= segment.length) throw new Error();
 
     // 3. Set currentByte to the byte whose the value is the number corresponding to segment’s positionth code unit, according to the [base64] encoding.
-    currentByte = BASE64_TABLE[segment[position.value]];
+    currentByte = BASE64_ALPHABET[segment[position.value]];
 
     // 4. Let chunk be currentByte & 0x1F, as a number.
     const chunk = currentByte & 0x1F;
