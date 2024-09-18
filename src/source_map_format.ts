@@ -3,7 +3,7 @@ import {
   isAsciiString,
   List,
   Map,
-  parseJSONIntoInfraValue,
+  parseJSONStringIntoInfraValue,
   type PositionVariable,
   strictlySplit,
 } from "@miyauci/infra";
@@ -124,7 +124,7 @@ export function decodeSourceMapFromJSONString(
   baseURL: URL,
 ): DecodedSourceMap {
   // 1. Let jsonMap be the result of parsing a JSON string to an Infra value str.
-  const jsonMap = parseJSONIntoInfraValue(str);
+  const jsonMap = parseJSONStringIntoInfraValue(str);
 
   // 2. If jsonMap is not a map, report an error and abort these steps.
   if (!(jsonMap instanceof Map)) throw new Error();
