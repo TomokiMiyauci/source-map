@@ -320,7 +320,9 @@ export function optionallyGetArrayIndexList(
 /**
  * [Source Map](https://tc39.es/source-map/#optionally-report-an-error)
  */
-export function optionallyReportError() {}
+export function optionallyReportError() {
+  throw new Error();
+}
 
 /**
  * [Source Map](https://tc39.es/source-map/#decoded-mapping)
@@ -415,7 +417,7 @@ export function decodeSourceMapMappings(
   let nameIndex = 0;
 
   // 10. While generatedLine is less than groups’s size:
-  while (groups.size < generatedLine) {
+  while (generatedLine < groups.size) {
     // 1. If groups[generatedLine] is not the empty string, then:
     if (groups[generatedLine] !== "") {
       // 1. Let segments be the result of strictly splitting groups[generatedLine] on ,.
@@ -439,7 +441,7 @@ export function decodeSourceMapMappings(
         }
 
         // 4. Increase generatedColumn by relativeGeneratedColumn. If the result is negative, optionally report an error and continue with the next iteration.
-        if ((generatedColumn -= relativeGeneratedColumn) < 0) {
+        if ((generatedColumn += relativeGeneratedColumn) < 0) {
           optionallyReportError();
           continue;
         }
@@ -531,7 +533,7 @@ export function decodeSourceMapMappings(
 }
 
 /**
- * [](https://tc39.es/source-map/#decode-a-base64-vlq)
+ * [Source Map](https://tc39.es/source-map/#decode-a-base64-vlq)
  */
 export function decodeBase64VLQ(
   segment: string,
@@ -593,7 +595,7 @@ export function decodeBase64VLQ(
 }
 
 /**
- * [](https://tc39.es/source-map/#decode-source-map-sources)
+ * [Source Map](https://tc39.es/source-map/#decode-source-map-sources)
  */
 export function decodeSourceMapSources(
   baseURL: URL,
@@ -637,7 +639,7 @@ export function decodeSourceMapSources(
     // 2. If source is not null:
     if (source !== null) {
       // 1. Set source to the concatenation of sourceURLPrefix and source.
-      source = concatenate(sourceURLPrefix, source);
+      source = concatenate(source, sourceURLPrefix);
 
       // 2. Let sourceURL be the result of URL parsing source with baseURL.
       const sourceURL = URL.parse(source, baseURL);
