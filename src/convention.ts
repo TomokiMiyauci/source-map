@@ -28,7 +28,7 @@ const PATTERN = /^[@#]\s*sourceMappingURL=(\S*?)\s*$/;
 /**
  * [Source Map](https://tc39.es/source-map/#extract-a-source-map-url-from-javascript-without-parsing)
  */
-export function extractSourceMapURLFromJavaScriptWithoutParsing(
+export function extractSourceMapURLWithoutParsing(
   source: string,
 ): string | null {
   // 1. Let lines be the result of strictly splitting source on ECMAScript line terminator code points.
