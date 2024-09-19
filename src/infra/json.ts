@@ -42,7 +42,7 @@ export function convertJSONDerivedJavaScriptValue(
     const length = jsValue.length;
 
     // 3. For each index of the range 0 to length − 1, inclusive:
-    for (const index of range(0, length - 1, "exclusive")) {
+    for (const index of range(0, length - 1, "inclusive")) {
       // 1. Let indexName be ! ToString(index).
       const indexName = String(index);
 

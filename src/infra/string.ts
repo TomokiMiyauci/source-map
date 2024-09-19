@@ -26,7 +26,7 @@ export function strictlySplit(input: string, delimiter: string): List<string> {
 
   const endOfInput = input.length;
   // 5. While position is not past the end of input:
-  while (position.value <= endOfInput) {
+  while (position.value < endOfInput) {
     // 1. Assert: the code point at position within input is delimiter.
 
     // 2. Advance position by 1.
