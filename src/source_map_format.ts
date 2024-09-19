@@ -93,7 +93,7 @@ export class DecodedSourceMap {
   /**
    * [Source Map](https://tc39.es/source-map/#decoded-source-map-mappings)
    */
-  mappings!: List<unknown>;
+  mappings!: List<DecodedMapping>;
 }
 
 /**
@@ -320,7 +320,7 @@ export function optionallyGetArrayIndexList(
 /**
  * [Source Map](https://tc39.es/source-map/#optionally-report-an-error)
  */
-export function optionallyReportError() {
+export function optionallyReportError(): never {
   throw new Error();
 }
 
