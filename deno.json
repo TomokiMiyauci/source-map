@@ -1,7 +1,8 @@
 {
   "name": "@miyauci/source-map",
   "tasks": {
-    "test": "deno test --doc"
+    "test": "deno test --doc",
+    "lint": "deno fmt --check && deno lint && deno doc --lint src/mod.ts"
   },
   "imports": {
     "@miyauci/fetch": "./src/fetch/mod.ts",
@@ -12,7 +13,7 @@
     "@std/testing": "jsr:@std/testing@^1.0.2"
   },
 
-  "exports": "./mod.ts",
+  "exports": "./src/mod.ts",
   "version": "0.1.0-placeholder",
   "exclude": ["CHANGELOG.md"]
 }
