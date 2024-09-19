@@ -170,6 +170,9 @@ export function extractSourceMapURLFromWebAssemblySource(
   return null;
 }
 
+/**
+ * [Source Map](https://tc39.es/source-map/#fetching-source-maps)
+ */
 export async function fetchSourceMap(url: URL): Promise<SourceMap> {
   // 1. Let promise be a new promise.
   const { promise, resolve } = Promise.withResolvers<SourceMap>();

@@ -95,6 +95,9 @@ export function concatenate(
  * [Infra Standard](https://infra.spec.whatwg.org/#string-position-variable)
  */
 export interface PositionVariable {
+  /**
+   * @internal
+   */
   value: number;
 }
 

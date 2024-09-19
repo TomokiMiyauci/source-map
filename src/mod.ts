@@ -21,3 +21,6 @@ export {
   fetchSourceMap,
   matchSourceMapURLInComment,
 } from "./convention.ts";
+
+export type { List, Map } from "@miyauci/infra";
+export type { PositionVariable } from "@miyauci/infra";
