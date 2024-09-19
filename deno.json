@@ -1,0 +1,17 @@
+{
+  "name": "@miyauci/source-map",
+  "tasks": {
+    "test": "deno test --doc"
+  },
+  "imports": {
+    "@miyauci/fetch": "./src/fetch/mod.ts",
+    "@miyauci/infra": "./src/infra/mod.ts",
+    "@miyauci/rfc4648": "./src/rfc4648/mod.ts",
+    "@std/expect": "jsr:@std/expect@^1.0.3",
+    "@std/testing": "jsr:@std/testing@^1.0.2"
+  },
+
+  "exports": "./mod.ts",
+  "version": "0.1.0-placeholder",
+  "exclude": ["CHANGELOG.md"]
+}
