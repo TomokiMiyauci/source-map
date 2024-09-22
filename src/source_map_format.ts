@@ -302,8 +302,9 @@ export function optionallyGetArrayIndexList(
   // For each jsonItem of jsonMap[key]:
   for (const jsonItem of items) {
     // If jsonItem is a non-negative integer number, append it to list.
-    if (0 <= jsonItem && Number.isInteger(jsonItem)) list.append(jsonItem);
-    // Else,
+    if (typeof jsonItem === "number" && isNonNegativeInteger(jsonItem)) {
+      list.append(jsonItem);
+    } // Else,
     else {
       // If jsonItem is not null, optionally report an error.
       if (jsonItem !== null) optionallyReportError();
@@ -315,6 +316,10 @@ export function optionallyGetArrayIndexList(
 
   // Return list.
   return list;
+}
+
+function isNonNegativeInteger(input: number): boolean {
+  return 0 <= input && Number.isInteger(input);
 }
 
 /**
