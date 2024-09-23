@@ -2,6 +2,7 @@
   "version": "3",
   "packages": {
     "specifiers": {
+      "jsr:@miyauci/estree@1.0.0-beta.1": "jsr:@miyauci/estree@1.0.0-beta.1",
       "jsr:@miyauci/infra@^1.0.0": "jsr:@miyauci/infra@1.0.0",
       "jsr:@std/assert@^1.0.4": "jsr:@std/assert@1.0.5",
       "jsr:@std/assert@^1.0.5": "jsr:@std/assert@1.0.5",
@@ -13,6 +14,9 @@
       "jsr:@std/testing@^1.0.2": "jsr:@std/testing@1.0.2"
     },
     "jsr": {
+      "@miyauci/estree@1.0.0-beta.1": {
+        "integrity": "f2db5128a6189d368ff67b8ab5aa76edda090ba54589628e15a112fa29427a8f"
+      },
       "@miyauci/infra@1.0.0": {
         "integrity": "033cb39b6347182011a3a194d5ee2df67243e35397e7089e214c47adc5335a9d"
       },
